@@ -17,9 +17,16 @@ module "nat" {
   subnet-id = "${module.vpc.subnet-id}"
   count_number = "${module.vpc.count_number}"
 }
-# module "server" {
-#   source = "./modules/server"
-# }
-# module "elb" {
-#   source = "./modules/elb"
-# }
+module "server" {
+  source = "./modules/server"
+  subnet-id = "${module.nat.subnet-id}"
+  vpc_id = "${module.vpc.vpc_id}"
+  dns_name = "${module.elb.ELB}"
+  elb-name =  "${module.elb.elb-name}"
+  elb_sg_id = "${module.elb.elb_sg_id}"
+}
+module "elb" {
+  source = "./modules/elb"
+  vpc_id = "${module.vpc.vpc_id}"
+  subnet-id = "${module.vpc.subnet-id}"
+}

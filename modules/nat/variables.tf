@@ -7,7 +7,9 @@ variable "subnet-id" {
 variable "key_name" {
   default = "id_rsa1"
 }
-variable "count_number" {}
+variable "count_number" {
+  default = "4"
+}
 variable "vpc_net_prefix" {
   default = "10.0."
 }

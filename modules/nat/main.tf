@@ -20,7 +20,7 @@ resource "aws_subnet" "main-private" {
   count                   = "${var.count_number}"
   vpc_id                  = "${var.vpc_id}"
   cidr_block              = "${var.vpc_net_prefix}${count.index+4}${var.vpc_net_postfix}"
-  map_public_ip_on_launch = "true"
+  #map_public_ip_on_launch = "true"
   #availability_zone       = "us-east-1a"
   availability_zone = "${data.aws_availability_zones.az_available.names[count.index]}"
 
