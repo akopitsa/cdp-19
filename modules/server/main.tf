@@ -110,7 +110,9 @@ resource "aws_instance" "puppet-agent" {
   key_name               = "${var.key_name}"
   #subnet_id              = "${module.vpc-mod.aws_private_subnet_id_1}"
   subnet_id              = "${element(var.subnet-id, 3)}"
-  depends_on             = ["aws_security_group.allow-puppet"]
+  depends_on             = ["aws_security_group.allow-puppet",
+                            "aws_launch_configuration.cdp-launchconfig",
+                            "aws_autoscaling_group.cdp-autoscaling"]
 
   user_data = "${data.template_file.puppet-agent.rendered}"
 
