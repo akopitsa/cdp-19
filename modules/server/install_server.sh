@@ -36,6 +36,7 @@ echo "environment = production" >> /etc/puppetlabs/puppet/puppet.conf && \
 echo "runinterval = 3m" >> /etc/puppetlabs/puppet/puppet.conf
 echo """:backends:
   - yaml
+  - eyaml
 :hierarchy:
   - 'nodes/%{::trusted.certname}'
   - 'nodes/%{::fqdn}'
@@ -47,6 +48,8 @@ echo """:backends:
   :datadir: '/etc/puppetlabs/code/environments/%{::environment}/hieradata'
 """ > /etc/puppetlabs/puppet/hiera.yaml
 /opt/puppetlabs/puppet/bin/gem install r10k
+/opt/puppetlabs/puppet/bin/gem install hiera-eyaml
+/opt/puppetlabs/puppet/bin/eyaml createkeys
 echo ''':cachedir: '/var/cache/r10k'
 :sources:
   cdp:
