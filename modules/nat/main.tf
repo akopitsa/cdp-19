@@ -46,7 +46,7 @@ resource "aws_instance" "nat-instance" {
   subnet_id                   = "${element(var.subnet-id, 0)}"
   vpc_security_group_ids      = ["${aws_security_group.for-nat-instance.id}"]
   source_dest_check           = false
-  associate_public_ip_address = true
+  associate_public_ip_address = false
 
   root_block_device {
     volume_size           = "8"
