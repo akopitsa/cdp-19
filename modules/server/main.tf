@@ -40,7 +40,7 @@ resource "aws_security_group" "allow-puppet" {
 }
 
 data "template_file" "puppet-server" {
-  template = "${file("./modules/server/install_server.sh")}"
+  template = "${file("../../modules/server/install_server.sh")}"
 
   vars {
     dns_name = "${var.dns_name}"
@@ -89,7 +89,7 @@ resource "aws_autoscaling_group" "cdp-autoscaling" {
 
 // ===================================================================
 data "template_file" "puppet-agent" {
-  template = "${file("./modules/server/install_agent.sh")}"
+  template = "${file("../../modules/server/install_agent.sh")}"
 
   vars {
     dns_name = "${var.dns_name}"
