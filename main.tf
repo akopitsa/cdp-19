@@ -8,6 +8,7 @@ terraform {
     encrypt = true
   }
 }
+
 data "terraform_remote_state" "vpc" {
   backend = "s3"
   config {
@@ -17,9 +18,8 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
-
 provider "aws" {
-    region = "${data.terraform_remote_state.vpc.config.region}"
+    region = "${var.region}"
 #    access_key = "${var.aws_access_key}"
 #    secret_key = "${var.aws_secret_key}"
 }
