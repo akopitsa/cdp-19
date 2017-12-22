@@ -3,11 +3,11 @@ resource "aws_elb" "my-elb" {
   subnets         = ["${element(var.subnet-id, 0)}",
                      "${element(var.subnet-id, 1)}"]
   security_groups = ["${aws_security_group.elb-securitygroup.id}"]
-  access_logs {
-    bucket = "cdp-access-log-elb"
-    bucket_prefix = "my-app"
-    interval = 5
-  }
+#  access_logs {
+#    bucket = "cdp-access-log-elb"
+#    bucket_prefix = "my-app"
+#    interval = 5
+#  }
   listener {
     instance_port     = 80
     instance_protocol = "http"
