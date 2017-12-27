@@ -7,7 +7,9 @@ variable "public_key_path" {
 }
 
 variable "AMI" {
-  default = "ami-ae7bfdb8"
+# ubuntu 16 ami-aa2ea6d0
+# centos 7 ami-ae7bfdb8  
+  default = "ami-aa2ea6d0"
 }
 
 variable "instance_type" {
