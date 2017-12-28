@@ -3,7 +3,6 @@
 wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
 dpkg -i puppetlabs-release-pc1-xenial.deb
 apt-get update
-apt-get dist-upgrade -y
 apt-get install -y ntpdate vim mc git 
 timedatectl set-timezone Europe/Kiev
 ntpdate pool.ntp.org

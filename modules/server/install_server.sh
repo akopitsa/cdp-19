@@ -12,8 +12,7 @@ sysctl -p
 curl -O https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
 dpkg -i puppetlabs-release-pc1-xenial.deb
 apt-get update
-apt-get dist-upgrade -y
-apt-get install -y ntp vim mc git tree 
+apt-get install -y ntp vim mc git ntpdate
 apt-get -y install nginx
 MYIP=`ifconfig | grep 'inet 10' | awk '{print $2}'` && echo 'This is: '$MYIP > /usr/share/nginx/html/index.html
 systemctl start nginx.service
@@ -55,7 +54,7 @@ echo """:backends:
 echo ''':cachedir: '/var/cache/r10k'
 :sources:
   cdp:
-    remote: 'https://github.com/akopitsa/cdp-control-repo.git'
+    remote: 'https://github.com/akopitsa/control-repo.git'
     basedir: '/etc/puppetlabs/code/environments'
     prefix: false
 ''' >> /etc/puppetlabs/puppet/r10k.yaml
