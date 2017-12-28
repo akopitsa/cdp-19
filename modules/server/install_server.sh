@@ -10,9 +10,9 @@ echo "vm.swappiness = 100" >> /etc/sysctl.conf
 echo "vm.vfs_cache_pressure = 50" >> /etc/sysctl.conf
 sysctl -p
 curl -O https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
-sudo dpkg -i puppetlabs-release-pc1-xenial.deb
-sudo apt-get update
-sudo apt-get dist-upgrade -y
+dpkg -i puppetlabs-release-pc1-xenial.deb
+apt-get update
+apt-get dist-upgrade -y
 apt-get install -y ntp vim mc git tree 
 apt-get -y install nginx
 MYIP=`ifconfig | grep 'inet 10' | awk '{print $2}'` && echo 'This is: '$MYIP > /usr/share/nginx/html/index.html
@@ -25,7 +25,7 @@ sed -i 's/server 2.centos.pool.ntp.org/server 2.ua.pool.ntp.org/g' /etc/ntp.conf
 sed -i 's/server 3.centos.pool.ntp.org/server 3.ua.pool.ntp.org/g' /etc/ntp.conf
 systemctl restart ntpd
 systemctl enable ntpd
-sudo apt-get install puppetserver
+apt-get install puppetserver -y
 echo "autosign = true" >> /etc/puppetlabs/puppet/puppet.conf
 #SERVERHOSTNAME=`/usr/bin/curl http://169.254.169.254/latest/meta-data/public-hostname` && \
 echo "dns_alt_names = ${dns_name},server" >> /etc/puppetlabs/puppet/puppet.conf

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
-sudo dpkg -i puppetlabs-release-pc1-xenial.deb
+dpkg -i puppetlabs-release-pc1-xenial.deb
 apt-get update
-sudo apt-get dist-upgrade -y
+apt-get dist-upgrade -y
 apt-get install -y ntpdate vim mc git 
 timedatectl set-timezone Europe/Kiev
 ntpdate pool.ntp.org
@@ -20,5 +20,5 @@ server = ${dns_name}
 environment = production
 runinterval = 2m
 """ >> /etc/puppetlabs/puppet/puppet.conf
-sudo systemctl start puppet
-sudo systemctl enable puppet
+systemctl start puppet
+systemctl enable puppet
